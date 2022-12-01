@@ -4,19 +4,19 @@ const Joi = require('joi');
 const reviewSchema = Schema(
   {
     date: {
-      type: 'string',
+      type: String,
       require: [true, 'Set date for review'],
     },
     author: {
-      type: 'string',
+      type: String,
       require: [true, 'Set name for review'],
     },
     stars: {
-      type: 'number',
+      type: Number,
       require: [true, 'Set stars for review'],
     },
     description: {
-      type: 'string',
+      type: String,
       require: [true, 'Set description for review'],
     },
   },
@@ -32,3 +32,5 @@ const addReviewSchema = Joi.object({
 const Review = model('review', reviewSchema);
 
 module.exports = { Review, addReviewSchema };
+
+//I will need to add - find a duplicate in the Database//
