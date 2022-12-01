@@ -7,7 +7,7 @@ const reviewSchema = Schema(
       type: 'string',
       require: [true, 'Set date for review'],
     },
-    name: {
+    author: {
       type: 'string',
       require: [true, 'Set name for review'],
     },
@@ -25,7 +25,7 @@ const reviewSchema = Schema(
 
 const addReviewSchema = Joi.object({
   date: Joi.string().required(),
-  name: Joi.string().min(2).required(),
+  author: Joi.string().min(2).required(),
   stars: Joi.number().min(1).max(5).required(),
   description: Joi.string().required(),
 });

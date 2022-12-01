@@ -17,4 +17,10 @@ app.use((err, req, res, next) => {
   res.status(500).json({ message: err.message });
 });
 
+// const moment = require('moment');
+
+// const nowDate = moment().format('DD.MM.YYYY');
+
+const { Review } = require('./models');
+
 module.exports = app;
