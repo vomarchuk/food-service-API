@@ -1,11 +1,16 @@
 const express = require('express');
 const router = express.Router();
 
-const { controllerWrapper } = require('../../middleware');
+const { controllerWrapper, validation } = require('../../middleware');
 
 const { reviewsController: reviewsCtrl } = require('../../controllers');
+const { addReviewSchema } = require('../../models/review');
 
 router.get('/');
 
-router.post('/', controllerWrapper(reviewsCtrl.addReview));
+router.post(
+  '/',
+  validation(addReviewSchema),
+  controllerWrapper(reviewsCtrl.addReview)
+);
 module.exports = router;

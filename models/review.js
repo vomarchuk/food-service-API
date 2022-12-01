@@ -24,7 +24,6 @@ const reviewSchema = Schema(
 );
 
 const addReviewSchema = Joi.object({
-  date: Joi.string().required(),
   author: Joi.string().min(2).required(),
   stars: Joi.number().min(1).max(5).required(),
   description: Joi.string().required(),

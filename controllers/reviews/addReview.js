@@ -1,8 +1,5 @@
-const { Review } = require('../../models');
-
 const moment = require('moment');
-
-// console.log(Review);
+const { Review } = require('../../models');
 
 const addReview = async (req, res) => {
   const currentDate = moment().format('DD.MM.YYYY');
