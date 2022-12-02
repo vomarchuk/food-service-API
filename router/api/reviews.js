@@ -6,7 +6,7 @@ const { controllerWrapper, validation } = require('../../middleware');
 const { reviewsController: reviewsCtrl } = require('../../controllers');
 const { addReviewSchema } = require('../../models/review');
 
-router.get('/');
+router.get('/', controllerWrapper(reviewsCtrl.getAllReviews));
 
 router.post(
   '/',
