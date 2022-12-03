@@ -1,3 +1,3 @@
 const { Review } = require('./review');
-
-module.exports = { Review };
+const { Category } = require('./category');
+module.exports = { Review, Category };

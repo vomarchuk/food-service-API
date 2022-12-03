@@ -1,3 +1,4 @@
 const reviewsController = require('./reviews');
+const categoriesController = require('./categories');
 
-module.exports = { reviewsController };
+module.exports = { reviewsController, categoriesController };

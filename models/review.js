@@ -1,27 +1,30 @@
 const { Schema, model } = require('mongoose');
+const { handleSchemaValidationErrors } = require('../helpers');
 const Joi = require('joi');
 
 const reviewSchema = Schema(
   {
     date: {
       type: String,
-      require: [true, 'Set date for review'],
+      required: [true, 'Set date for review'],
     },
     author: {
       type: String,
-      require: [true, 'Set name for review'],
+      required: [true, 'Set name for review'],
     },
     stars: {
       type: Number,
-      require: [true, 'Set stars for review'],
+      required: [true, 'Set stars for review'],
     },
     description: {
       type: String,
-      require: [true, 'Set description for review'],
+      required: [true, 'Set description for review'],
     },
   },
-  { versionKey: false, timestamp: true }
+  { versionKey: false, timestamps: true }
 );
+
+reviewSchema.post('save', handleSchemaValidationErrors);
 
 const addReviewSchema = Joi.object({
   author: Joi.string().min(2).required(),
