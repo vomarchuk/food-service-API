@@ -30,4 +30,10 @@ router.put(
   controllerWrapper(categoriesCtrl.updateCategorySoonById)
 );
 
+router.delete(
+  '/:id',
+  isValidId,
+  controllerWrapper(categoriesCtrl.removeCategoryById)
+);
+
 module.exports = router;
