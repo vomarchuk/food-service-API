@@ -55,6 +55,14 @@ const addCategoriesSchema = Joi.object({
   },
 });
 
+const updateCategorySoonByIdSchema = Joi.object({
+  soon: Joi.boolean().required(),
+});
+
 const Category = model('category', categorySchema);
 
-module.exports = { Category, addCategoriesSchema };
+module.exports = {
+  Category,
+  addCategoriesSchema,
+  updateCategorySoonByIdSchema,
+};
