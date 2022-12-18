@@ -1,11 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const {
-  controllerWrapper,
-  validation,
-  isValidId,
-} = require('../../middleware');
+const { controllerWrapper, validation } = require('../../middleware');
 const { categoriesController: categoriesCtrl } = require('../../controllers');
 const {
   addCategoriesSchema,
@@ -15,7 +11,7 @@ const {
 router.get('/', controllerWrapper(categoriesCtrl.getAllCategories));
 router.get(
   '/:id',
-  isValidId,
+
   controllerWrapper(categoriesCtrl.getCategoryById)
 );
 router.post(
@@ -25,15 +21,10 @@ router.post(
 );
 router.put(
   '/:id',
-  isValidId,
   validation(updateCategorySoonByIdSchema),
   controllerWrapper(categoriesCtrl.updateCategorySoonById)
 );
 
-router.delete(
-  '/:id',
-  isValidId,
-  controllerWrapper(categoriesCtrl.removeCategoryById)
-);
+router.delete('/:id', controllerWrapper(categoriesCtrl.removeCategoryById));
 
 module.exports = router;
