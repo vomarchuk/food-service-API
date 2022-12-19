@@ -7,7 +7,7 @@ const addCategory = async (req, res) => {
   res.status(201).json({
     status: 'success',
     code: 201,
-    date: { result },
+    data: { result },
   });
 };
 module.exports = addCategory;

@@ -9,7 +9,7 @@ const addReview = async (req, res) => {
   res.status(201).json({
     status: 'success',
     code: 201,
-    date: { result },
+    data: { result },
   });
 };
 

@@ -9,7 +9,7 @@ const getReviewById = async (req, res) => {
   res.status(200).json({
     status: 'success',
     code: 200,
-    date: { result },
+    data: { result },
   });
 };
 
