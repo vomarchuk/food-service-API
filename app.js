@@ -11,6 +11,15 @@ app.use(logger(formatLogger));
 app.use(cors());
 app.use(express.json());
 
+app.use('/', (req, res, next) => {
+  res.json({
+    status: 'success',
+    code: 200,
+    date: {
+      message: 'OK',
+    },
+  });
+});
 app.use('/api/categories', categoriesRouter);
 app.use('/api/reviews', reviewsRouter);
 
