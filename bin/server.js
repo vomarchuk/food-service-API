@@ -1,15 +1,16 @@
-const mongoose = require('mongoose');
 const app = require('../app');
-require('dotenv').config();
-const { PORT, DB_HOST } = process.env;
+const { connectDatabase, PORT } = require('../config');
 
-mongoose
-  .connect(DB_HOST)
-  .then(() => {
-    app.listen(PORT);
-    console.log(`Database connection successful on port ${PORT}!`);
-  })
-  .catch((error) => {
-    console.log(error.message);
+const start = async () => {
+  try {
+    await connectDatabase();
+    app.listen(PORT, () => {
+      console.log(`Database connection successful on port ${PORT}!`);
+    });
+  } catch (error) {
+    console.log('Failed to start application with error: ', error.message);
     process.exit(1);
-  });
+  }
+};
+
+start();
