@@ -6,6 +6,7 @@ const { corsOptions } = require('./config');
 
 const reviewsRouter = require('./router/api/reviews');
 const categoriesRouter = require('./router/api/categories');
+const productsRouter = require('./router/api/products');
 const app = express();
 const formatLogger = app.get('env') === 'development' ? 'dev' : 'short';
 
@@ -14,6 +15,7 @@ app.use(cors(corsOptions));
 app.use(express.json());
 
 app.use('/api/categories', categoriesRouter);
+app.use('/api/products', productsRouter);
 app.use('/api/reviews', reviewsRouter);
 
 app.use((req, res) => {

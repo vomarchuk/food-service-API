@@ -1,3 +1,4 @@
 const { Review } = require('./review');
 const { Category } = require('./category');
-module.exports = { Review, Category };
+const { Product } = require('./product');
+module.exports = { Review, Category, Product };
