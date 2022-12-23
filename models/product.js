@@ -11,27 +11,38 @@ const productSchema = Schema(
       type: Number,
       required: [true, 'Set price for product'],
     },
+    weight: {
+      type: Number,
+      default: null,
+    },
+    chunks: {
+      type: Number,
+      default: null,
+    },
     smallImage: {
       x1: {
         type: String,
-        // required: true,
-        default: '../helpers/default.img.png',
+        default:
+          'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',
       },
-      // x2: {
-      //   type: String,
-      //   required: true,
-      // },
+      x2: {
+        type: String,
+        default:
+          'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',
+      },
     },
-    // largeImage: {
-    //   x1: {
-    //     type: String,
-    //     required: true,
-    //   },
-    //   x2: {
-    //     type: String,
-    //     required: true,
-    //   },
-    // },
+    largeImage: {
+      x1: {
+        type: String,
+        default:
+          'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',
+      },
+      x2: {
+        type: String,
+        default:
+          'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',
+      },
+    },
     category: {
       type: Schema.Types.ObjectId,
       ref: 'category',
@@ -43,14 +54,16 @@ const productSchema = Schema(
 const addProductSchema = Joi.object({
   productName: Joi.string().required(),
   price: Joi.number().required(),
+  weight: Joi.number(),
+  chunks: Joi.number(),
   smallImage: {
     x1: Joi.string(),
-    // x2: Joi.string(),
+    x2: Joi.string(),
   },
-  // largeImage: {
-  //   x1: Joi.string(),
-  //   x2: Joi.string(),
-  // },
+  largeImage: {
+    x1: Joi.string(),
+    x2: Joi.string(),
+  },
 });
 const Product = model('product', productSchema);
 module.exports = { Product, addProductSchema };
