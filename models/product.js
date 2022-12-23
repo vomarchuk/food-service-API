@@ -19,6 +19,14 @@ const productSchema = Schema(
       type: Number,
       default: null,
     },
+    promotion: {
+      type: Boolean,
+      default: false,
+    },
+    promotionPrice: {
+      type: Number,
+      default: null,
+    },
     smallImage: {
       x1: {
         type: String,
@@ -56,6 +64,8 @@ const addProductSchema = Joi.object({
   price: Joi.number().required(),
   weight: Joi.number(),
   chunks: Joi.number(),
+  promotion: Joi.boolean(),
+  promotionPrice: Joi.number(),
   smallImage: {
     x1: Joi.string(),
     x2: Joi.string(),
