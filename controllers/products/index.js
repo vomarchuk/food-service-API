@@ -1,11 +1,13 @@
 const addProduct = require('./addProduct');
-const getProductByCategoryId = require('./getProductByCategoryId');
+const getProductsByCategoryId = require('./getProductsByCategoryId');
+const getProductById = require('./getProductById');
 const getAllProducts = require('./getAllProducts');
-const removeProductByCategoryId = require('./removeProductByCategoryId');
+const removeProductById = require('./removeProductById');
 
 module.exports = {
   addProduct,
-  getProductByCategoryId,
+  getProductsByCategoryId,
+  getProductById,
   getAllProducts,
-  removeProductByCategoryId,
+  removeProductById,
 };

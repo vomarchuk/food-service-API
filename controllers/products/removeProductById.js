@@ -2,7 +2,7 @@ const { Product } = require('../../models');
 
 const { RequestError } = require('../../helpers');
 
-const removeProductByCategoryId = async (req, res) => {
+const removeProductById = async (req, res) => {
   const { id } = req.params;
 
   const result = await Product.findById(id);
@@ -12,4 +12,4 @@ const removeProductByCategoryId = async (req, res) => {
   res.json(result);
 };
 
-module.exports = removeProductByCategoryId;
+module.exports = removeProductById;
