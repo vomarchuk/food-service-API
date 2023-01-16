@@ -31,18 +31,6 @@ const productSchema = Schema(
       type: Number,
       default: null,
     },
-    largeImage: {
-      x1: {
-        type: String,
-        default:
-          'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',
-      },
-      x2: {
-        type: String,
-        default:
-          'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',
-      },
-    },
     category: {
       type: Schema.Types.ObjectId,
       ref: 'category',
@@ -53,16 +41,12 @@ const productSchema = Schema(
 
 const addProductSchema = Joi.object({
   productName: Joi.string().required(),
+  productImage: Joi.string(),
   price: Joi.number().required(),
   weight: Joi.number(),
   chunks: Joi.number(),
   promotion: Joi.boolean(),
   promotionPrice: Joi.number(),
-  largeImage: {
-    x1: Joi.string(),
-    x2: Joi.string(),
-  },
-  productImage: Joi.string().required(),
 });
 const Product = model('product', productSchema);
 module.exports = { Product, addProductSchema };
