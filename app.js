@@ -1,18 +1,7 @@
 const express = require('express');
 const logger = require('morgan');
 const cors = require('cors');
-//
-const path = require('path');
-const fs = require('fs/promises');
-
-const productsDir = path.join(__dirname, 'public', 'productsImage');
-
-const { upload } = require('./middleware');
-
-//
-
 const { corsOptions } = require('./config');
-
 const reviewsRouter = require('./router/api/reviews');
 const categoriesRouter = require('./router/api/categories');
 const productsRouter = require('./router/api/products');
@@ -28,7 +17,11 @@ app.use('/api/categories', categoriesRouter);
 app.use('/api/products', productsRouter);
 app.use('/api/reviews', reviewsRouter);
 
-const productsIm = [];
+const { upload } = require('./middleware');
+
+const path = require('path');
+const fs = require('fs/promises');
+const productsDir = path.join(__dirname, '../../public', 'productsImage');
 
 app.post('/api/img', upload.single('image'), async (req, res) => {
   try {
@@ -42,16 +35,11 @@ app.post('/api/img', upload.single('image'), async (req, res) => {
       ...req.body,
       productImage,
     };
-    productsIm.push(newProduct);
-    console.log(productsIm);
-    res.status(201).json(newProduct);
+
+    // res.status(201).json(newProduct);
   } catch (error) {
     await fs.unlink(req.file.path);
   }
-});
-
-app.get('/api/img', (req, res) => {
-  res.status(200).json(productsIm);
 });
 
 app.use((req, res) => {
