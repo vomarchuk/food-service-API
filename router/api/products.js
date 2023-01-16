@@ -10,7 +10,7 @@ router.get('/one/:id', controllerWrapper(productsCtrl.getProductById));
 router.get('/', controllerWrapper(productsCtrl.getAllProducts));
 router.post(
   '/:id',
-  // validation(addProductSchema),
+  validation(addProductSchema),
   upload.single('productImage'),
   controllerWrapper(productsCtrl.addProduct)
 );

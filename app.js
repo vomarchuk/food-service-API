@@ -17,31 +17,6 @@ app.use('/api/categories', categoriesRouter);
 app.use('/api/products', productsRouter);
 app.use('/api/reviews', reviewsRouter);
 
-const { upload } = require('./middleware');
-
-const path = require('path');
-const fs = require('fs/promises');
-const productsDir = path.join(__dirname, '../../public', 'productsImage');
-
-app.post('/api/img', upload.single('image'), async (req, res) => {
-  try {
-    const { path: tempUpload, filename } = req.file;
-    const resultUpload = path.join(productsDir, filename);
-    await fs.rename(tempUpload, resultUpload);
-
-    const productImage = path.join('productsImage', filename);
-
-    const newProduct = {
-      ...req.body,
-      productImage,
-    };
-
-    // res.status(201).json(newProduct);
-  } catch (error) {
-    await fs.unlink(req.file.path);
-  }
-});
-
 app.use((req, res) => {
   res.status(404).json({ message: 'Not Found' });
 });

@@ -1,11 +1,11 @@
 const { Product } = require('../../models');
-const { HOST } = require('../../config');
 const path = require('path');
 const fs = require('fs/promises');
 
 const productsDir = path.join(__dirname, '../../public', 'productsImage');
 console.log(productsDir);
 const addProduct = async (req, res) => {
+  console.log(req.params);
   const { id } = req.params;
   if (req.file) {
     const { path: tempUpload, filename } = req.file;
@@ -15,15 +15,17 @@ const addProduct = async (req, res) => {
     const newProduct = {
       ...req.body,
       category: id,
-      productImage: `${HOST}/${productImage}`,
+      productImage,
     };
+    const result = await Product.create(newProduct);
+    res.status(201).json(result);
+  } else {
+    const newProduct = {
+      ...req.body,
+      category: id,
+    };
+    const result = await Product.create(newProduct);
+    res.status(201).json(result);
   }
-  const newProduct = {
-    ...req.body,
-    category: id,
-  };
-  const result = await Product.create(newProduct);
-
-  res.status(201).json(result);
 };
 module.exports = addProduct;

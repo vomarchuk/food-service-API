@@ -40,9 +40,9 @@ const productSchema = Schema(
 );
 
 const addProductSchema = Joi.object({
-  productName: Joi.string().required(),
+  productName: Joi.string(),
   productImage: Joi.string(),
-  price: Joi.number().required(),
+  price: Joi.number(),
   weight: Joi.number(),
   chunks: Joi.number(),
   promotion: Joi.boolean(),
