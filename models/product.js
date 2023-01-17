@@ -7,9 +7,9 @@ const productSchema = Schema(
       type: String,
       required: [true, 'Set name for product'],
     },
-    productImage: {
+    productImageUrl: {
       type: String,
-      default: 'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',
+      required: true,
     },
     price: {
       type: Number,
@@ -41,7 +41,7 @@ const productSchema = Schema(
 
 const addProductSchema = Joi.object({
   productName: Joi.string(),
-  productImage: Joi.string(),
+  productImageUrl: Joi.string(),
   price: Joi.number(),
   weight: Joi.number(),
   chunks: Joi.number(),
