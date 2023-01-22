@@ -5,19 +5,10 @@ const categorySchema = Schema(
   {
     categoryName: { type: String, required: true },
     fullName: { type: String, required: true },
-    image: {
-      x1: {
-        type: String,
-        required: true,
-        default:
-          'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',
-      },
-      x2: {
-        type: String,
-        required: true,
-        default:
-          'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',
-      },
+    categoryImageUrl: {
+      type: String,
+      required: true,
+      default: 'https://i.im.ge/2022/09/22/1hCnp0.52034884657-1aa7ed551e-o.png',
     },
     doubleCard: {
       type: Boolean,
@@ -41,10 +32,7 @@ const categorySchema = Schema(
 const addCategoriesSchema = Joi.object({
   categoryName: Joi.string().required(),
   fullName: Joi.string().required(),
-  image: {
-    x1: Joi.string().required(),
-    x2: Joi.string().required(),
-  },
+  categoryImageUrl: Joi.string().required(),
   doubleCard: Joi.boolean(),
   soon: Joi.boolean(),
   typesSort: {

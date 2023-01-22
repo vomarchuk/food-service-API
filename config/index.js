@@ -2,7 +2,7 @@ const { DB_HOST, DB_HAME, PORT, HOST } = require('./config');
 const { connectDatabase } = require('./db.connect');
 const { ALLOWED_DOMAINS } = require('./constants');
 const { corsOptions } = require('./options');
-const multerConfig = require('./multerConfig');
+const { multerConfigStorage, multerConfigFilter } = require('./multerConfig');
 
 module.exports = {
   DB_HOST,
@@ -12,5 +12,6 @@ module.exports = {
   connectDatabase,
   ALLOWED_DOMAINS,
   corsOptions,
-  multerConfig,
+  multerConfigStorage,
+  multerConfigFilter,
 };
